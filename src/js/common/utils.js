@@ -1,3 +1,4 @@
+import { User } from "../feedback/user";
 // 生成用户名和头像
 export function generateUsernameWithAvatar() {
     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
