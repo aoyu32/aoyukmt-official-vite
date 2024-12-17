@@ -1,0 +1,240 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    margin-top: 72px;
+    width: 1200px;
+    height: calc(100vh - 72px);
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 72px;
+    z-index: 20;
+    color: var(--primary);
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    color: rgb(188, 190, 191);
+}
+
+.sidebar-toggle span {
+    font-size: 1rem;
+}
+
+.updatelog-content {
+    flex: 1;
+    background-color: white;
+    margin-left: 250px;
+    box-shadow: inset 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-size: 16px;
+    color: #333;
+    overflow-y: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.updatelog-content h1 {
+    color: #ff4b5c;
+}
+
+.latest-version {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.latest-version h2 {
+    margin-bottom: 20px;
+    /* background-color: #ff6b6b; */
+    border-radius: 15px;
+    color: var(--primary);
+}
+
+.history-version h2 {
+    margin-bottom: 20px;
+    /* background-color: #ff6b6b; */
+    border-radius: 15px;
+    color: var(--primary);
+}
+
+.history-version {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Update Log Content Styles */
+.updatelog-content {
+    background-color: #fff;
+    padding: 10px 50px 0 50px;
+}
+
+.latest-version,
+.history-version {
+    margin-bottom: 30px;
+}
+
+.update-log {
+    /* background-color: #fef0f0; */
+    border: 1px solid #fde2e2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.update-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ff4d4f;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.version-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff4d4f;
+}
+
+.update-date {
+    font-size: 14px;
+    color: #ff7875;
+}
+
+.update-content h3 {
+    color: #ff4d4f;
+    font-size: 18px;
+    margin: 25px 0 25px 0;
+
+    position: relative;
+}
+
+.update-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.update-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+.update-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #ff4d4f;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.latest-version h4 {
+    color: #ff4b5c;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.latest-version a {
+    color: #f27e89;
+    transition: 0.5s
+}
+
+.latest-version a:hover {
+    color: var(--primary);
+}
+
+.download-version {
+    border-radius: 8px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.download-version h4 {
+    font-size: 18px;
+    color: #e74c3c;
+    /* 红色 */
+    margin-bottom: 15px;
+}
+
+.download-version p {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.download-version .download-link {
+    border-radius: 4px;
+
+    color: #f27e89;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.download-version p:last-child {
+    color: #999;
+    font-size: 12px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .updatelog-content {
+        padding: 10px;
+    }
+
+    .update-log {
+        padding: 15px;
+    }
+
+    .download-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .version-title {
+        font-size: 20px;
+    }
+
+    .update-date {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .update-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .update-list li {
+        font-size: 14px;
+    }
+}

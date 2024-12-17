@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/aoyukmt.png" type="image/x-icon">
+    <title>aoyukmt - 使用文档</title>
+    <link rel="stylesheet" href="../css/document/document.css">
+    <link rel="stylesheet" href="../css/common/header.css">
+    <link rel="stylesheet" href="../css/document/header.css">
+    <link rel="stylesheet" href="../css/common/global.css">
+    <link rel="stylesheet" href="../css/document/sidebar.css">
+    <link rel="stylesheet" href="../css/common/markdown.css">
+    <link rel="stylesheet" href="../css/document/footer.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4773888_1n8i5ut0bio.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="logo">
+                <img src="../assets/aoyukmt.png">
+                <span class="logo-text" id="logo-text"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                &#9776;
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="download.html" class="download-link">🛬 下载安装</a>
+                <a href="document.html">📋 使用文档</a>
+                <a href="feedback.html">🗃️ 意见反馈</a>
+                <a href="updatelog.html" class="updatelog-link">🫠 更新日志</a>
+            </div>
+        </nav>
+    </header>
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Sidebar">
+        <i class="iconfont icon-a-1you_right" id="sidebar-button" style="font-size: 24px;"></i>
+    </button>
+    <main>
+        <div class="main-content">
+            <aside class="document-sidebar" id="sidebar">
+                <nav class="sidebar-nav">
+                    <h3>文档导航</h3>
+                    <ul class="nav-menu">
+                        <li class="has-submenu"><a>快速开始<span class="iconfont icon-arrow-right"></span></a>
+                            <ul class="nav-submenu">
+                                <li><a href="#" data-md="start">简介</a></li>
+                                <li><a href="#" data-md="start2">安装和启动</a></li>
+                                <li><a href="#" data-md="start">快速入门</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu"><a>使用指导<span class="iconfont icon-arrow-right"></span></a>
+                            <ul class="nav-submenu">
+                                <li><a href="#" data-md="direction-control1">字符输入映射</a></li>
+                                <li><a href="#" data-md="direction-control2">方向键映射</a></li>
+                                <li><a href="#" data-md="direction-control3">编辑控制映射</a></li>
+                                <li><a href="#" data-md="direction-control4">打开磁盘映射</a></li>
+                                <li><a href="#" data-md="direction-control5">应用快捷启动</a></li>
+                                <li><a href="#" data-md="direction-control6">网站快捷启动</a></li>
+                                <li><a href="#" data-md="direction-control7">热字符串</a></li>
+                                <li><a href="#" data-md="direction-control8">常用系统操作映射</a></li>
+                                <li><a href="#" data-md="direction-control9">资源管理器映射</a></li>
+                                <li><a href="#" data-md="direction-control10">窗口操作映射</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu"><a href="#">应用配置<span class="iconfont icon-arrow-right"></span></a>
+                            <ul class="nav-submenu">
+                                <li><a href="#" data-md="edit-control1">配置说明</a></li>
+                                <li><a href="#" data-md="edit-control2">各功能配置</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu"><a href="#">常见问题<span class="iconfont icon-arrow-right"></span></a>
+                            <ul class="nav-submenu">
+                                <li><a href="#" data-md="edit-control1">错误弹窗</a></li>
+                                <li><a href="#" data-md="edit-control2">按键映射问题</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="markdown-content">
+                <!-- 文档内容 -->
+                <section class="markdown-body" id="document-content">
+                    <!-- Markdown content will be loaded here -->
+
+                </section>
+
+                <nav class="pn-page">
+                    <a class="pre-page" id="pre-page">
+                        <p class="pre">
+                            <i class="iconfont icon-shangyiye"></i>
+                            <span>快速开始</span>
+                        </p>
+                    </a>
+                    <a class="next-page" id="next-page">
+                        <p class="next">
+                            <span>字符输入映射</span>
+                            <i class="iconfont icon-xiayiye"></i>
+                        </p>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/common/typewriter.js"></script>
+    <script src="../js/document/header.js"></script>
+    <script src="../js/document/markdown.js"></script>
+    <script src="../js/document/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</body>
+
+</html>

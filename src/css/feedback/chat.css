@@ -1,0 +1,362 @@
+.chat-container {
+    width: 1200px;
+    display: flex;
+    height: 95%;
+    position: relative;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    /* position: relative; */
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    animation: breathing-border 5s infinite alternate;
+}
+
+@keyframes breathing-border {
+    0% {
+        box-shadow:
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    25% {
+        box-shadow:
+            0 0 10px rgba(255, 230, 230, 0.8),
+            0 0 20px rgba(255, 230, 230, 0.5);
+    }
+
+    50% {
+        box-shadow:
+            0 0 10px rgba(255, 200, 200, 0.8),
+            0 0 20px rgba(255, 200, 200, 0.5);
+    }
+
+    75% {
+        box-shadow:
+            0 0 10px rgba(255, 150, 150, 0.8),
+            0 0 20px rgba(255, 150, 150, 0.5);
+    }
+
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 102, 102, 0.8),
+            0 0 20px rgba(255, 102, 102, 0.5);
+    }
+}
+
+
+.chat-window {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(100% - 100px);
+}
+
+.input-box {
+    width: 100%;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px 20px 20px;
+}
+
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 15px 5px 10px;
+    position: relative;
+    border: 1px solid #ff6666;
+    max-height: 500px;
+    border-radius: 15px;
+    width: 100%;
+    transition: box-shadow 0.2s ease;
+}
+
+
+#chat-input {
+    width: 100%;
+    max-height: 200px;
+    min-height: 40px;
+    overflow-y: auto;
+    overflow: hidden;
+    resize: none;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px;
+    position: relative;
+    /* 添加平滑过渡 */
+}
+
+#chat-input-area.focused {
+    box-shadow: 0 0 7px rgba(255, 102, 102, 0.7);
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+    /* 隐藏占位符 */
+}
+
+.upload {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+    font-size: 22px;
+}
+
+.upload button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #ff6666;
+    transition: 0.2s ease-in-out;
+}
+
+.upload-icon {
+    cursor: pointer;
+}
+
+.upload button:hover {
+    background-color: #ff6666;
+}
+
+/* 预览区样式 */
+.preview-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.preview-container .image-wrapper {
+    position: relative;
+    width: 100px;
+    height: 60px;
+}
+
+.preview-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    filter: grayscale(100%);
+    mask-image: linear-gradient(to bottom, rgb(90, 88, 88) 0%, rgba(93, 90, 90, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    transition: mask-image 1s ease-out, filter 1s ease-out;
+}
+
+.preview-container .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.preview-container .delete-btn:hover {
+    background-color: rgba(69, 67, 67, 0.7);
+}
+
+
+@media (max-width: 768px) {
+    .chat-container {
+        width: 95%;
+    }
+
+    .chat-message .message-wrapper {
+        display: flex;
+        flex-direction: column;
+        max-width: 70%;
+    }
+
+}
+
+/* 提示框 */
+/* chat-tip 提示框的基本样式 */
+.chat-tip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #ff6161;
+    color: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+    opacity: 0;
+    z-index: 10;
+    box-shadow: 1px 5px 10px rgba(70, 63, 63, 0.304);
+}
+
+/* 提示框从上方弹出的动画 */
+@keyframes slideDown {
+    0% {
+        transform: translateX(-50%) translateY(-75%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 1;
+    }
+}
+
+/* 提示框收回的动画 */
+@keyframes slideUp {
+    0% {
+        transform: translateX(-50%) translateY(15px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-65%);
+        opacity: 0;
+    }
+}
+
+/* 通过弹出和收回动画显示/隐藏提示框 */
+.chat-tip.show {
+    display: block;
+    animation: slideDown 0.25s ease-out forwards;
+}
+
+.chat-tip.hide {
+    display: block;
+    animation: slideUp 0.25s ease-in forwards;
+    pointer-events: none;
+}
+
+
+/* 为上传按钮添加提示气泡样式 */
+.upload-icon {
+    position: relative;
+    display: inline-block;
+}
+
+/* 上传按钮的提示气泡 */
+.upload-icon::after {
+    content: "请上传图片，可以拖拽和复制上传哦.😏";
+    /* 提示文本 */
+    position: absolute;
+    bottom: -20px;
+    left: 120%;
+    transform: translateX(-50%);
+    background-color: #ff4d4da1;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+    /* 默认隐藏 */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* 鼠标悬浮时显示上传按钮的提示气泡 */
+.upload-icon:hover::after {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    animation: slideIn 0.3s ease-in-out forwards, fadeOut 0.5s 1.2s forwards;
+}
+
+/* 为发送按钮添加提示气泡样式 */
+#send-button {
+    position: relative;
+    display: inline-block;
+}
+
+/* 发送按钮的提示气泡 */
+#send-button::after {
+    content: "点击发送消息或按下Shift+Enter发送.🤪";
+    /* 提示文本 */
+    position: absolute;
+    bottom: -20px;
+    right: 120%;
+    transform: translateX(-50%);
+    background-color: #ff4d4d88;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+    /* 默认隐藏 */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* 鼠标悬浮时显示发送按钮的提示气泡 */
+#send-button:hover::after {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    animation: slideIn 0.3s ease-in-out forwards, fadeOut 0.5s 1s forwards;
+}
+
+/* 提示气泡显示动画 */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 提示气泡隐藏动画 */
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* 提示气泡隐藏动画 */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

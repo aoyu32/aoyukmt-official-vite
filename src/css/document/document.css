@@ -1,0 +1,158 @@
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+    position: relative;
+    top: 72px;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.markdown-content {
+    width: 100%;
+    margin-left: 250px;
+    overflow-y: auto;
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 72px;
+    z-index: 20;
+    color: var(--primary);
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    color: rgb(188, 190, 191);
+}
+
+.sidebar-toggle span {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+    .document-sidebar {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 250px;
+        height: calc(100vh - 72px);
+        background-color: white;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        z-index: 15;
+    }
+
+    .document-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .markdown-body {
+        padding: 1rem;
+        margin-left: 0;
+    }
+}
+
+.pn-page {
+    display: flex;
+    height: 65px;
+    padding: 0 5rem;
+    margin-bottom: 50px;
+    color: rgb(100, 101, 101);
+    font-size: 14px;
+    justify-content: space-between;
+}
+
+.pre-page,
+.next-page {
+    width: 500px;
+    border: 1px solid rgba(145, 142, 142, 0.676);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    transition: border-color 0.3s ease;
+}
+
+.pre-page {
+    margin-right: 10px;
+}
+
+.next-page {
+    margin-left: 10px;
+}
+
+/* 子元素样式调整 */
+.pre {
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: flex-start;
+    /* 水平靠左 */
+    width: 100%;
+    /* 占满父容器宽度 */
+}
+
+.next {
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: flex-end;
+    /* 水平靠右 */
+    width: 100%;
+    /* 占满父容器宽度 */
+}
+
+/* 图标和文本间距微调 */
+.pre i {
+    font-size: 17px;
+    margin-right: 8px;
+    /* 图标与文本间的间距 */
+}
+
+.next i {
+    font-size: 17px;
+    margin-left: 8px;
+    /* 图标与文本间的间距 */
+}
+
+.pre span,
+.next span {
+    white-space: nowrap;
+    /* 防止换行 */
+}
+
+/* Hover 效果 */
+.pre-page:hover,
+.next-page:hover {
+    border-color: var(--primary);
+}
+
+/* 隐藏状态（保持布局一致） */
+.hidden {
+    visibility: hidden;
+    pointer-events: none;
+}

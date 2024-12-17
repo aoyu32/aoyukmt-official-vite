@@ -1,0 +1,191 @@
+.download-section {
+    padding-top: 90px;
+    text-align: center;
+    background-color: #fff5f5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 动态背景基础样式 */
+.dynamic-background {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    /* background: linear-gradient(120deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee); */
+    background: linear-gradient(120deg, #ff7b7b, #ffd1d1, #ffe8e8, #ffbc80);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 背景动画 */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.download-section img {
+    width: 190px;
+    height: 190px;
+    border-radius: 35px;
+    /* 圆角设置，与实际icon一致 */
+    margin-bottom: 40px;
+}
+
+/* 初始化动画 */
+img {
+    position: relative;
+    /* 确保动画生效 */
+    width: 190px;
+    /* 图片宽度，可根据需求调整 */
+    height: auto;
+    /* 保持图片比例 */
+    opacity: 0;
+    /* 初始隐藏 */
+    transform: translateY(20px);
+    /* 初始位置向下 */
+    animation: fadeIn 1s ease-out forwards;
+    /* 淡入并上移 */
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    /* 动效平滑过渡 */
+    filter: grayscale(0);
+    /* 初始无滤镜 */
+    /* 悬浮过渡效果 */
+}
+
+/* 鼠标悬浮效果 */
+img:hover {
+    transform: scale(1.1);
+    /* 放大效果 */
+    box-shadow: 0 0 20px 10px rgba(252, 52, 52, 0.6);
+    /* 红色光晕效果 */
+    filter: grayscale(20%) sepia(50%) hue-rotate(-15deg) brightness(1.7);
+    /* 红白搭配的滤镜 */
+}
+
+/* 动画关键帧 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        /* 初始位置 */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* 最终位置 */
+    }
+}
+
+
+.download-section h2 {
+    font-size: 2rem;
+    color: #ff4d4d;
+    margin-bottom: 30px;
+}
+
+.download-section p {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.download-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.download-card {
+    background-color: white;
+    border: 2px solid #ff4d4d;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.download-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff4d4d;
+}
+
+.download-card p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #5c5b5b;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e63939;
+}
+
+.latest-version {
+    color: #726d6da1;
+    margin-top: 20px;
+    /* font-weight: 600; */
+}
+
+/* 响应式处理 */
+@media (max-width: 800px) {
+
+    .download-section img{
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .download-options{
+        display: block;
+    }
+
+    .download-card {
+        margin-bottom: 10px;
+    }
+
+    .download-section h2 {
+        font-size: 1.8rem;
+        color: #ff4d4d;
+        margin-bottom: 20px;
+    }
+    
+    .download-section p {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+}

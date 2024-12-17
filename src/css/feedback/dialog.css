@@ -1,0 +1,330 @@
+/* 弹框的遮罩层 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 弹框样式 */
+.modal {
+    background: #fff;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.username {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f32d2d;
+}
+
+
+/* 关闭按钮 */
+.modal .close-button {
+    width: 20px;
+    height: 20px;
+    background: #ff4d4dc7;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal .close-button:hover {
+    background: #ff3b3b;
+}
+
+/* 头像样式 */
+.modal .avatar-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+
+.modal .avatar {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 32px;
+}
+
+.avatar-container .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--primary);
+}
+
+.avatar-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.modal .avatar-upload {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 2px solid #ff7e7edd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff7e7edd;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.avatar-upload:hover {
+
+    border: 2px solid #d0cdcddf;
+    color: #d0cdcddf;
+}
+
+/* 提示信息 */
+.modal .info {
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b6b6bc7;
+    margin-bottom: 10px;
+}
+
+
+/* 输入框 */
+.modal input[type="text"] {
+    width: 100%;
+    margin: 0 auto 10px;
+    display: block;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.modal input[type="text"]:focus {
+    border-color: #ff4d4d;
+    color: #535151ea;
+}
+
+.modal input[type="text"]:focus::placeholder {
+    color: transparent;
+}
+
+/* 提示内容 */
+.modal .input-hint {
+    font-size: 12px;
+    color: #fc6f6fb1;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* 按钮组 */
+.modal .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.modal button {
+    width: 45%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal .confirm-button {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.modal .confirm-button:hover {
+    background: #e43c3c;
+}
+
+.modal .cancel-button {
+    background: #fff;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+}
+
+.modal .cancel-button:hover {
+    background: #ff4d4dbf;
+    color: #fff;
+}
+
+.avatar-upload {
+    position: relative;
+    display: inline-block;
+}
+
+/* 上传按钮的提示气泡 */
+/* 上传按钮的提示气泡 */
+.avatar-upload::after {
+    content: '点击修改头像,图片要小于3M哈🤓';
+    width: 100px;
+    /* 使用固定宽度而不是max-width */
+    word-wrap: break-word;
+    /* 允许长单词换行 */
+    overflow-wrap: break-word;
+    /* 现代浏览器的换行属性 */
+    white-space: normal;
+    /* 允许文本自然换行 */
+    position: absolute;
+    bottom: -35px;
+    left: 120%;
+    transform: translateX(-50%);
+    background-color: #ff4d4da1;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 9px;
+    font-size: 12px;
+    display: none;
+    /* 默认隐藏 */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* 鼠标悬浮时显示上传按钮的提示气泡 */
+.avatar-upload:hover::after {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    animation: slideIn 0.3s ease-in-out forwards, fadeOut 0.5s 1.2s forwards;
+}
+
+/* 没有动画时的样式 */
+.blink1 {
+    animation: blinkOfInput 0.5s infinite;
+}
+
+.blink2 {
+
+    animation: blinkOfAvatar 0.5s infinite;
+}
+
+/* 定义闪烁的动画 */
+@keyframes blinkOfInput {
+    0% {
+        /* opacity: 1; */
+        text-shadow: 0 0 3px rgba(255, 77, 77, 0.42), 0 0 6px rgba(255, 77, 77, 0.393);
+        /* 红光反射，范围更小 */
+    }
+
+    50% {
+        /* opacity: 0; */
+        text-shadow: none;
+        /* 文字消失时没有阴影 */
+    }
+
+    100% {
+        /* opacity: 1; */
+        text-shadow: 0 0 3px rgba(255, 77, 77, 0.42), 0 0 6px rgba(255, 77, 77, 0.393);
+        /* 恢复红光反射 */
+    }
+}
+
+/* 定义闪烁的动画 */
+@keyframes blinkOfAvatar {
+    0% {
+        /* opacity: 1; */
+        box-shadow: 0 0 5px rgba(255, 77, 77, 0.42), 0 0 8px rgba(255, 77, 77, 0.393);
+        /* 红光反射，范围更小 */
+    }
+
+    50% {
+        /* opacity: 0; */
+        box-shadow: none;
+        /* 文字消失时没有阴影 */
+    }
+
+    100% {
+        /* opacity: 1; */
+        box-shadow: 0 0 5px rgba(255, 77, 77, 0.42), 0 0 8px rgba(255, 77, 77, 0.393);
+        /* 恢复红光反射 */
+    }
+}
+
+
+/* 确认按钮提示气泡 */
+.confirm-button {
+    position: relative;
+    display: inline-block;
+}
+
+/* 上传按钮的提示气泡 */
+.confirm-button::after {
+    content: var(--tooltip-content, "确定修改请点击!🤠");
+    /* 提示文本 */
+    position: absolute;
+    top: -27px;
+    left: 100%;
+    transform: translateX(-50%);
+    background-color: #ff4d4da1;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: var(--tooltip-display, none);
+    /* 使用 CSS 自定义属性控制显示 */
+    /* 默认隐藏 */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* 鼠标悬浮时显示上传按钮的提示气泡 */
+.confirm-button:hover::after {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+    animation: slideIn 0.3s ease-in-out forwards, fadeOut 0.5s 1.2s forwards;
+}

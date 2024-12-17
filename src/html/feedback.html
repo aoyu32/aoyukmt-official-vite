@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/aoyukmt.png" type="image/x-icon">
+    <title>aoyukmt - 聊天式意见反馈</title>
+    <link rel="stylesheet" href="../css/common/global.css">
+    <link rel="stylesheet" href="../css/common/header.css">
+    <link rel="stylesheet" href="../css/feedback/feedback.css">
+    <link rel="stylesheet" href="../css/feedback/footer.css">
+    <link rel="stylesheet" href="../css/feedback/chat.css">
+    <link rel="stylesheet" href="../css/feedback/message.css">
+    <link rel="stylesheet" href="../css/feedback/dialog.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4773888_ojw010w4x8.css">
+    <script src="https://cdn.jsdelivr.net/npm/@multiavatar/multiavatar/multiavatar.min.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="logo">
+                <img src="../assets/aoyukmt.png" alt="Logo">
+                <span class="logo-text" id="logo-text">aoyukmt</span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                &#9776;
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="download.html">🛸 下载安装</a>
+                <a href="document.html" class="document-link">🗞️ 使用文档</a>
+                <a href="feedback.html" class="feedback-link">💀 意见反馈</a>
+                <a href="updatelog.html">🥷 更新日志</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-content" id="main-content">
+            <div class="chat-container active">
+                <div class="chat-window" id="chat-window">
+                    <div class="chat-tip"></div>
+                </div>
+                <div class="input-box">
+                    <div id="preview-container" class="preview-container"></div>
+                    <div class="chat-input-area" id="chat-input-area">
+                        <textarea id="chat-input" placeholder="请输入您的反馈或意见..." rows="1"></textarea>
+                        <div class="upload">
+                            <input type="file" id="image-upload" multiple accept="image/*" hidden />
+                            <label for="image-upload" class="upload-icon">🔗</label>
+                            <button id="send-button">
+                                🍥
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-overlay">
+                    <div class="modal">
+                        <div class="modal-header">
+                            <span class="username" id="username">Hi, user-fsv4g</span>
+                            <button class="close-button">
+                                <i class="iconfont icon-guanbi"></i>
+                            </button>
+                        </div>
+                        <div class="avatar-container">
+                            <div class="avatar">
+                                <div class="avatar-img" id="avatar-img"></div>
+                                <input type="file" id="avatar-img-input" multiple accept="image/*" hidden />
+                                <div for="avatar-img-input" class="avatar-upload" id="avatar-upload">
+                                    <i class="iconfont icon-xiugaimima"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">请修改你的名字吧🫡</div>
+                        <input type="text" id="input-name" placeholder="🔧 修改用户名">
+                        <div class="input-hint" id="input-hint">用户名长度，字符数不大于8个哈!🫰</div>
+                        <div class="button-group">
+                            <button class="confirm-button" id="confirm">确认</button>
+                            <button class="cancel-button" id="cancel">取消</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2024 aoyukmt. All rights reserved. | 提供完全自定义支持</p>
+    </footer> -->
+
+    <script src="../js/feedback/feedback.js"></script>
+    <script src="../js/feedback/header.js"></script>
+    <script src="../js/common/typewriter.js"></script>
+    <script src="../js/feedback/chat.js"></script>
+    <script type="module" src="../js/feedback/message.js"></script>
+    <script src="../js/feedback/image.js"></script>
+    <script type="module" src="../js/feedback/dialog.js"></script>
+    <script src="../js/feedback/replay.js"></script>
+    <script type="module" src="../js/feedback/coze.js"></script>
+
+</body>
+
+</html>

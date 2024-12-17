@@ -1,0 +1,142 @@
+/* Sidebar Container */
+.document-sidebar {
+    top: 72px;
+    width: 250px;
+    height: calc(100vh - 72px);
+    overflow-y: auto;
+    z-index: 10;
+    position: fixed;
+    transition: all 0.1s ease;
+    background: #fff;
+}
+
+.sidebar-nav {
+    padding: 20px;
+}
+
+.sidebar-nav h3 {
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 一级菜单样式 */
+.nav-menu li {
+    margin-bottom: 5px;
+}
+
+/* 一级菜单链接样式 */
+.nav-menu li a {
+    display: flex;
+    /* 使用 flexbox 布局 */
+    justify-content: space-between;
+    /* 将子元素分布在两侧 */
+    align-items: center;
+    /* 垂直居中对齐 */
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    position: relative;
+}
+
+/* 侧边栏图标 */
+.nav-menu li a .iconfont {
+    margin-left: auto;
+    /* 将图标推到右侧 */
+    font-size: 14px;
+}
+
+/* 初始状态下的图标（未旋转） */
+.iconfont {
+    transition: transform 0.3s ease;
+    /* 设置过渡效果 */
+}
+
+/* 添加旋转180度的效果 */
+.iconfont.rotate {
+    transform: rotate(90deg);
+    /* 旋转180度 */
+}
+
+
+/* Hover effect for 一级菜单 */
+.nav-menu li a:hover {
+    background-color: #f1aaa165;
+    color: #e74c3c;
+}
+
+/* Active 一级菜单 */
+.nav-menu li a.active {
+    color: #e74c3c;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+/* 二级菜单样式 */
+.nav-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 20px;
+    /* 缩进效果 */
+    display: none;
+    /* 默认隐藏 */
+}
+
+.nav-submenu li a {
+    display: block;
+    padding: 8px 15px;
+    color: #666;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Hover effect for 二级菜单 */
+.nav-submenu li a:hover {
+    background-color: #ffefef;
+    color: #e74c3c;
+}
+
+/* Active 二级菜单 */
+.nav-submenu li a.active {
+    color: #e74c3c;
+    font-weight: bold;
+    border-left: 2px solid #e74c3c;
+    padding-left: 11px;
+    border-radius: 0;
+}
+
+/* 展开的菜单 */
+.nav-menu li.open>.nav-submenu {
+    display: block;
+    /* 显示展开的二级菜单 */
+}
+
+.nav-menu li>a::after {
+    font-size: 12px;
+    color: #aaa;
+    transition: transform 0.3s ease;
+}
+
+.nav-menu li.open>a::after {
+    transform: rotate(180deg);
+    /* 旋转箭头 */
+}
