@@ -106,5 +106,5 @@ function getRandomReply() {
     return replies[randomIndex];
 }
 
-// 示例调用
-console.log(getRandomReply());
+// // 示例调用
+// console.log(getRandomReply());

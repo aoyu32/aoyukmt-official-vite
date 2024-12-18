@@ -99,7 +99,7 @@ function removeImagePreView() {
 }
 
 // 发送官方消息回复
-function appendOfficialReply(message) {
+async function appendOfficialReply(message) {
     //构建官方消息气泡
     //消息主体
     const msg = document.createElement('div');
@@ -144,111 +144,93 @@ function appendOfficialReply(message) {
     msg.appendChild(avatar);
     msg.appendChild(messageWrapper);
 
-    //渲染消息内容到消息气泡
-    startChat(message, textMessage)
-
-    //发送消息到窗口
-    setTimeout(() => {
-        chatWindow.appendChild(msg);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-    }, 1000);
-
-
-
+    const stream = await cozeChat(message);
+    renderMessageStream(stream, textMessage,chatWindow)
+        .then(successMessage => {
+            chatWindow.appendChild(msg);
+        })
+        .catch(errorMessage => {
+            console.error(errorMessage); // 处理错误
+        });
 }
 
 // 用户消息回复
 function appendUserMessage(chatWindow, input, imgArray) {
     const messageContent = input.value;
-    CreateMessageBox(chatWindow, user.getUsername(), messageContent, 'user', imgArray);
-    // 自动回复消息
-    appendOfficialReply(input.value)
-    input.value = ''; // 重置输入框
-}
-
-
-// 构建消息盒子
-function CreateMessageBox(chatWindow, sender, message, type, imgArray) {
+    //消息主体 
     const msg = document.createElement('div');
-    msg.className = 'chat-message ' + type;
+    msg.className = 'chat-message ' + 'user';
 
+    //头像
     const avatar = document.createElement('div');
     avatar.className = 'avatar';
-
-    if (type === 'user') {
-        if (isSVG(user.getAvatar())) {
-            avatar.innerHTML = user.getAvatar();
-        } else {
-            const av = document.createElement('img');
-            av.src = user.getAvatar();
-            avatar.appendChild(av);
-        }
+    //判断头像是svg还是img
+    if (isSVG(user.getAvatar())) {
+        //直接渲染到头像盒子里
+        avatar.innerHTML = user.getAvatar()
     } else {
-        const officialAvatar = document.createElement('img');
-        officialAvatar.src = '\\src\\assets\\avatar\\aoyukmt-avatar.svg';
-        avatar.appendChild(officialAvatar);
+        //创建个img元素将src给img
+        const avatarImg = document.createElement('img')
+        avatarImg.src = user.getAvatar()
+        avatar.append(avatarImg)
     }
 
+    //消息内容盒子
     const messageWrapper = document.createElement('div');
     messageWrapper.className = 'message-wrapper';
 
+    //用户名称
     const nameElement = document.createElement('div');
     nameElement.className = 'name';
-    if (type === "user") {
-        nameElement.textContent = '🪶' + sender;
-    } else {
-        nameElement.textContent = sender + '📬';
-    }
+    nameElement.textContent = '🪶' + user.getUsername();
 
+    //消息本体
     const messageContainer = document.createElement('div');
     messageContainer.className = 'message-content';
-    messageContainer.id = 'message-content'
-
     const textMessage = document.createElement('span');
     textMessage.style.justifyContent = 'center';
+    //将消息内容添加到消息盒子
+    if (messageContent !== "") {
+        textMessage.textContent = messageContent;
+        messageContainer.appendChild(textMessage);
+    }
 
+
+    //用户是否上传了图片
     if (imgArray.length !== 0) {
         textMessage.style.padding = "0 10px 10px 10px";
-
         const imgContainer = document.createElement('div');
         imgContainer.className = 'message-content-img';
-
         imgArray.forEach(imgItem => {
             const image = document.createElement('img');
             image.src = imgItem.src;
             imgContainer.appendChild(image);
         });
-
         messageContainer.appendChild(imgContainer);
         textMessage.style.justifyContent = '';
     }
 
-
-
-    if (message !== "") {
-        textMessage.textContent = message;
-        messageContainer.appendChild(textMessage);
-    }
+    //发送日期
     const date = new Date();
     const currentTime = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-
     const timeElement = document.createElement('div');
     timeElement.className = 'time';
     timeElement.textContent = currentTime;
 
+    //构建消息
     messageWrapper.appendChild(nameElement);
     messageWrapper.appendChild(messageContainer);
     messageWrapper.appendChild(timeElement);
-
     msg.appendChild(avatar);
     msg.appendChild(messageWrapper);
-
     chatWindow.appendChild(msg);
     chatWindow.scrollTop = chatWindow.scrollHeight;
+
+    appendOfficialReply(input.value)
+    input.value = ''; // 重置输入框
 }
 
 
 async function startChat(messageContent, element) {
-    const stream = await cozeChat(messageContent);
-    renderMessageStream(stream, element);
+
 }

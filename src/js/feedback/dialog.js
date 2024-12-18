@@ -81,8 +81,6 @@ function handleNameInput() {
 function handleImageUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
-
-
     const reader = new FileReader();
     reader.onload = function (e) {
         const img = new Image();
@@ -92,7 +90,6 @@ function handleImageUpload(event) {
         userAvatar.appendChild(img);
     };
     reader.readAsDataURL(file);
-
     const maxSizeInBytes = 3 * 1024 * 1024; // 3MB
     if (file.size > maxSizeInBytes) {
         avatarIsOk = false
@@ -101,8 +98,6 @@ function handleImageUpload(event) {
         avatarIsOk = true
         userAvatar.classList.remove('blink2')
     }
-
-
     updateTooltip(avatarUpload, "点击修改头像🤓");
 }
 

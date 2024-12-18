@@ -135,6 +135,7 @@
     padding: 10px;
     display: flex;
     word-break: break-word;
+    word-wrap: break-word;
     width: 100%;
 }
 
