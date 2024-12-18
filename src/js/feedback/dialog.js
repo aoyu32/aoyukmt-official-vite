@@ -166,7 +166,7 @@ function init() {
         updateTooltip(confirmButton, tip);
     })
     //上传头像按钮
-    avatarUpload.addEventListener('click', () => avatarImageInput.click());
+    avatarUpload.addEventListener('click', () => { avatarImageInput.click() });
     //上传头像input
     avatarImageInput.addEventListener('change', handleImageUpload);
     //修改用户名输入框

@@ -5,6 +5,7 @@ export default defineConfig({
   root: process.cwd(),
   // 构建输出目录
   build: {
+    assetsDir:'html',
     outDir: 'dist'
   },
   // 配置服务器选项
